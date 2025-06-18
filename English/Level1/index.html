@@ -1,1 +1,53 @@
-<h1>English Quiz Level1</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Quiz - Level 1</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#004080" />
+  <link rel="stylesheet" href="https://slide-t.github.io/edukidsafrica-games/assets/css/style.css">
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', event => {
+      if (event.ctrlKey && ['c','v','u','s'].includes(event.key.toLowerCase())) {
+        event.preventDefault();
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>English - Level 1</h1>
+    <div class="info-wrap">
+      <div id="score-box" class="info-box score-bg">
+        Score: <span id="score">0</span> | Mistakes: <span id="mistakes">0</span>
+      </div>
+      <div id="timer" class="info-box timer-bg">
+        Time: <span id="time">10</span>s
+      </div>
+    </div>
+    <div id="question-box" class="question-box">
+      <div id="question">Loading question...</div>
+      <div class="options">
+        <button onclick="checkAnswer(this)">Option 1</button>
+        <button onclick="checkAnswer(this)">Option 2</button>
+        <button onclick="checkAnswer(this)">Option 3</button>
+        <button onclick="checkAnswer(this)">Option 4</button>
+      </div>
+    </div>
+    <button id="next-level" onclick="goToNextLevel()">🎉 Proceed to Level 2</button>
+  </div>
+  <script src="https://slide-t.github.io/edukidsafrica-games/assets/js/main.js"></script>
+  
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("https://slide-t.github.io/edukidsafrica-games/assets/pwa/service-worker.js")
+    .then(reg => console.log("Service Worker registered ✅"))
+    .catch(err => console.error("Service Worker registration failed ❌", err));
+  }
+</script>
+ 
+  <link rel="manifest" href="https://slide-t.github.io/edukidsafrica-games/assets/pwa/manifest.json">
+</body>
+</html>
