@@ -1,1 +1,29 @@
-self.addEventListener("install",e=>{e.waitUntil(caches.open("quiz-cache").then(c=>c.addAll(["./","./script.js","./manifest.json"])))}),self.addEventListener("fetch",e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))})
+// service-worker.js
+
+const CACHE_NAME = "quiz-cache-v1";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./quiz.js",
+  "./style.css",
+  "./manifest.json",
+  "./icon-192.png", // include your icons if you use them
+  "./icon-512.png"
+];
+
+// Install Event
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+  );
+  self.skipWaiting(); // Activate immediately
+});
+
+// Fetch Event
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then(
+      (cachedResponse) => cachedResponse || fetch(event.request)
+    )
+  );
+});
