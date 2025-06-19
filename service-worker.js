@@ -1,6 +1,6 @@
 // service-worker.js
 
-const CACHE_NAME = "quiz-cache-v1";
+const CACHE_NAME = "quiz-cache-v.1.1";
 const ASSETS = [
   "./",
   "./index.html",
